@@ -63883,10 +63883,12 @@ var init = function init() {
   window.addEventListener('resize', onWindowResize, false);
   controls = new three_dragcontrols__WEBPACK_IMPORTED_MODULE_1__["default"](objects, camera, renderer.domElement);
   controls.addEventListener('dragstart', function (event) {
-    event.object.material.emissive.set(0xaaaaaa);
+    //event.object.material.emissive.set( 0xFF0000 );
+    event.object.material.color.setHex(0xFF0000);
   });
   controls.addEventListener('dragend', function (event) {
-    event.object.material.emissive.set(0x000000);
+    //event.object.material.emissive.set( 0xFF0000 );
+    event.object.material.color.setHex(0xFF0000); //event.object.material.color.setHex(0xFF0000);
   });
 };
 
