@@ -10,5 +10,6 @@ $( document ).ready(function() {
   console.log("test jabrane");
   draw_shape.init();
   draw_shape.animate();
+  draw_shape.export_scene();
 
 });

@@ -15,7 +15,8 @@
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",
     "three": "^0.110.0",
-    "three-dragcontrols": "^0.88.2"
+    "three-dragcontrols": "^0.88.2",
+    "three-gltf-exporter": "0.0.1"
   },
   "devDependencies": {
     "laravel-mix": "^5.0.0",

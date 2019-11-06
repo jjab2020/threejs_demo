@@ -7,6 +7,7 @@ import {WebGLRenderer} from 'three';
 import {AmbientLight} from 'three';
 import {DirectionalLight} from 'three';
 import DragControls from 'three-dragcontrols';
+import GLTFExporter from 'three-gltf-exporter';
 
 
 let scene,camera,geometry,material,mesh,renderer,light,directionalLight,objects=[],controls;
@@ -82,9 +83,40 @@ let onWindowResize = function() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+let export_scene = function(){
+    var exporter = new GLTFExporter();
+// Parse the input and generate the glTF output
+exporter.parse( scene, function ( gltf ) {
+	if ( gltf instanceof ArrayBuffer ) {
+        saveArrayBuffer( result, 'scene.glb' );
+    } else {
+        var output = JSON.stringify( gltf, null, 2 );
+        console.log( output );
+        saveString( output, 'scene.json' );
+    }
+}, {} );
+}
+
+let  saveString = function ( text, filename ) {
+    save( new Blob( [ text ], { type: 'text/plain' } ), filename );
+}
+
+
+let  save = function( blob, filename ) {
+    var link = document.createElement( 'a' );
+			link.style.display = 'none';
+			document.body.appendChild( link ); // Firefox workaround, see #6594
+    link.href = URL.createObjectURL( blob );
+    link.download = filename;
+    link.click();
+    // URL.revokeObjectURL( url ); breaks Firefox...
+}
+
+
   
 const drawApi = {
     init,
-    animate
+    animate,
+    export_scene
   }
   export default drawApi;
