@@ -101,6 +101,9 @@ let  saveString = function ( text, filename ) {
     save( new Blob( [ text ], { type: 'text/plain' } ), filename );
 }
 
+let saveArrayBuffer = function ( buffer, filename ) {
+    save( new Blob( [ buffer ], { type: 'application/octet-stream' } ), filename );
+}
 
 let  save = function( blob, filename ) {
     var link = document.createElement( 'a' );
@@ -111,7 +114,6 @@ let  save = function( blob, filename ) {
     link.click();
     // URL.revokeObjectURL( url ); breaks Firefox...
 }
-
 
   
 const drawApi = {

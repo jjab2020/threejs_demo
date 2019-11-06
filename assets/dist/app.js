@@ -65890,6 +65890,12 @@ var saveString = function saveString(text, filename) {
   }), filename);
 };
 
+var saveArrayBuffer = function saveArrayBuffer(buffer, filename) {
+  save(new Blob([buffer], {
+    type: 'application/octet-stream'
+  }), filename);
+};
+
 var save = function save(blob, filename) {
   var link = document.createElement('a');
   link.style.display = 'none';
